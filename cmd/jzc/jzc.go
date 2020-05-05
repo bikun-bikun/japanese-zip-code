@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -18,7 +19,12 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+	json, err := json.Marshal(zipCode)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 
-	fmt.Println(zipCode)
+	fmt.Println(string(json))
 	os.Exit(0)
 }
