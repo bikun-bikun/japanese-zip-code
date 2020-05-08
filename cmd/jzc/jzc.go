@@ -13,6 +13,11 @@ func main() {
 	z := flag.String("z", "", "zip code")
 	flag.Parse()
 
+	if *z == "" {
+		fmt.Println("-z は必須です。")
+		os.Exit(1)
+	}
+
 	c := japanese_zip_code.NewClient()
 	zipCode, err := c.GetZipCode(*z)
 	if err != nil {
